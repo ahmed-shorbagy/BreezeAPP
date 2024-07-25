@@ -1,4 +1,3 @@
-import 'package:breeze_forecast/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:breeze_forecast/features/auth/presentation/views/widgets/sign_up_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -36,4 +35,3 @@ class SignUpView extends StatelessWidget {
     );
   }
 }
-

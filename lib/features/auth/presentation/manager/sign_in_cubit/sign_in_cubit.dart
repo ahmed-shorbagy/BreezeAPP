@@ -19,7 +19,7 @@ class SignInCubit extends Cubit<SignInState> {
     );
     result.fold(
       (err) => emit(SignInError(err.errMessage)),
-      (user) => emit(SignInSuccess()),
+      (success) => emit(SignInSuccess()),
     );
   }
 }
