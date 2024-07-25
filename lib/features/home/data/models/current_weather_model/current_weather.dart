@@ -3,18 +3,18 @@ import 'package:collection/collection.dart';
 import 'current.dart';
 import 'current_units.dart';
 
-class CurrentWeather {
+class CurrentWeatherModel {
   final double? latitude;
   final double? longitude;
   final double? generationtimeMs;
   final int? utcOffsetSeconds;
   final String? timezone;
   final String? timezoneAbbreviation;
-  final int? elevation;
+  final double? elevation;
   final CurrentUnits? currentUnits;
   final Current? current;
 
-  const CurrentWeather({
+  const CurrentWeatherModel({
     this.latitude,
     this.longitude,
     this.generationtimeMs,
@@ -26,15 +26,15 @@ class CurrentWeather {
     this.current,
   });
 
-  factory CurrentWeather.fromJson(Map<String, dynamic> json) {
-    return CurrentWeather(
+  factory CurrentWeatherModel.fromJson(Map<String, dynamic> json) {
+    return CurrentWeatherModel(
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
       generationtimeMs: (json['generationtime_ms'] as num?)?.toDouble(),
       utcOffsetSeconds: json['utc_offset_seconds'] as int?,
       timezone: json['timezone'] as String?,
       timezoneAbbreviation: json['timezone_abbreviation'] as String?,
-      elevation: json['elevation'] as int?,
+      elevation: json['elevation'] as double?,
       currentUnits: json['current_units'] == null
           ? null
           : CurrentUnits.fromJson(
@@ -57,18 +57,18 @@ class CurrentWeather {
         'current': current?.toJson(),
       };
 
-  CurrentWeather copyWith({
+  CurrentWeatherModel copyWith({
     double? latitude,
     double? longitude,
     double? generationtimeMs,
     int? utcOffsetSeconds,
     String? timezone,
     String? timezoneAbbreviation,
-    int? elevation,
+    double? elevation,
     CurrentUnits? currentUnits,
     Current? current,
   }) {
-    return CurrentWeather(
+    return CurrentWeatherModel(
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       generationtimeMs: generationtimeMs ?? this.generationtimeMs,

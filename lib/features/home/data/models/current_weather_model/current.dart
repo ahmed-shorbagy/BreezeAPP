@@ -2,22 +2,22 @@ import 'package:collection/collection.dart';
 
 class Current {
   final String? time;
-  final int? interval;
-  final double? temperature2m;
-  final int? relativeHumidity2m;
-  final double? apparentTemperature;
-  final int? isDay;
-  final int? precipitation;
-  final int? rain;
-  final int? showers;
-  final int? snowfall;
-  final int? weatherCode;
-  final int? cloudCover;
-  final double? pressureMsl;
-  final double? surfacePressure;
-  final int? windSpeed10m;
-  final int? windDirection10m;
-  final double? windGusts10m;
+  final num? interval;
+  final num? temperature2m;
+  final num? relativeHumidity2m;
+  final num? apparentTemperature;
+  final num? isDay;
+  final num? precipitation;
+  final num? rain;
+  final num? showers;
+  final num? snowfall;
+  final num? weatherCode;
+  final num? cloudCover;
+  final num? pressureMsl;
+  final num? surfacePressure;
+  final num? windSpeed10m;
+  final num? windDirection10m;
+  final num? windGusts10m;
 
   const Current({
     this.time,
@@ -41,21 +41,21 @@ class Current {
 
   factory Current.fromJson(Map<String, dynamic> json) => Current(
         time: json['time'] as String?,
-        interval: json['interval'] as int?,
+        interval: json['interval'] as num?,
         temperature2m: (json['temperature_2m'] as num?)?.toDouble(),
-        relativeHumidity2m: json['relative_humidity_2m'] as int?,
+        relativeHumidity2m: json['relative_humidity_2m'] as num?,
         apparentTemperature: (json['apparent_temperature'] as num?)?.toDouble(),
-        isDay: json['is_day'] as int?,
-        precipitation: json['precipitation'] as int?,
-        rain: json['rain'] as int?,
-        showers: json['showers'] as int?,
-        snowfall: json['snowfall'] as int?,
-        weatherCode: json['weather_code'] as int?,
-        cloudCover: json['cloud_cover'] as int?,
+        isDay: json['is_day'] as num?,
+        precipitation: json['precipitation'] as num?,
+        rain: json['rain'] as num?,
+        showers: json['showers'] as num?,
+        snowfall: json['snowfall'] as num?,
+        weatherCode: json['weather_code'] as num?,
+        cloudCover: json['cloud_cover'] as num?,
         pressureMsl: (json['pressure_msl'] as num?)?.toDouble(),
         surfacePressure: (json['surface_pressure'] as num?)?.toDouble(),
-        windSpeed10m: json['wind_speed_10m'] as int?,
-        windDirection10m: json['wind_direction_10m'] as int?,
+        windSpeed10m: json['wind_speed_10m'] as num?,
+        windDirection10m: json['wind_direction_10m'] as num?,
         windGusts10m: (json['wind_gusts_10m'] as num?)?.toDouble(),
       );
 
@@ -81,22 +81,22 @@ class Current {
 
   Current copyWith({
     String? time,
-    int? interval,
-    double? temperature2m,
-    int? relativeHumidity2m,
-    double? apparentTemperature,
-    int? isDay,
-    int? precipitation,
-    int? rain,
-    int? showers,
-    int? snowfall,
-    int? weatherCode,
-    int? cloudCover,
-    double? pressureMsl,
-    double? surfacePressure,
-    int? windSpeed10m,
-    int? windDirection10m,
-    double? windGusts10m,
+    num? interval,
+    num? temperature2m,
+    num? relativeHumidity2m,
+    num? apparentTemperature,
+    num? isDay,
+    num? precipitation,
+    num? rain,
+    num? showers,
+    num? snowfall,
+    num? weatherCode,
+    num? cloudCover,
+    num? pressureMsl,
+    num? surfacePressure,
+    num? windSpeed10m,
+    num? windDirection10m,
+    num? windGusts10m,
   }) {
     return Current(
       time: time ?? this.time,

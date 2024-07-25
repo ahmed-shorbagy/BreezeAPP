@@ -1,7 +1,10 @@
 import 'package:breeze_forecast/core/utils/app_router.dart';
 import 'package:breeze_forecast/core/utils/helper_methodes.dart';
+import 'package:breeze_forecast/features/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:breeze_forecast/features/home/presentation/managers/current_weather_cubit/current_weather_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,16 +13,16 @@ class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
 
   @override
-  State<SignUpForm> createState() => _LogInFormState();
+  State<SignUpForm> createState() => _SignInFormState();
 }
 
-final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-bool isobsecure = true;
-final TextEditingController emailController = TextEditingController();
-final TextEditingController passwordController = TextEditingController();
+class _SignInFormState extends State<SignUpForm> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  bool isobsecure = true;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-class _LogInFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -74,7 +77,7 @@ class _LogInFormState extends State<SignUpForm> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: BlocConsumer<SignUpCubit, SignUpState>(
-                listener: (context, state) {
+                listener: (context, state) async {
                   if (state is SignUpSuccess) {
                     GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
                   } else if (state is SignUpError) {
@@ -88,7 +91,7 @@ class _LogInFormState extends State<SignUpForm> {
                     );
                   }
                   return Text(
-                    'Sign up',
+                    'Sign In',
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -103,9 +106,9 @@ class _LogInFormState extends State<SignUpForm> {
               const Text("Already have an account?"),
               TextButton(
                 onPressed: () {
-                  GoRouter.of(context).pushReplacement(AppRouter.kSignInView);
+                  GoRouter.of(context).pushReplacement(AppRouter.kSignUpView);
                 },
-                child: Text("Sign in",
+                child: Text("Sign In",
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.shadow,
                           fontWeight: FontWeight.bold,
