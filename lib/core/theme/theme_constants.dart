@@ -54,7 +54,7 @@ class AppThemes {
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
-      color: Colors.blueGrey,
+      color: Colors.black,
       iconTheme: const IconThemeData(color: Colors.white),
       toolbarTextStyle: const TextTheme(
         titleLarge: TextStyle(
@@ -72,8 +72,8 @@ class AppThemes {
       ).titleLarge,
     ),
     textTheme: const TextTheme(
-      headlineLarge: TextStyle(color: Colors.black),
-      headlineMedium: TextStyle(color: Colors.black),
+      headlineLarge: TextStyle(color: Colors.white),
+      headlineMedium: TextStyle(color: Colors.white),
       bodyLarge: TextStyle(color: Colors.white),
       bodyMedium: TextStyle(color: Colors.white70),
       titleLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -87,7 +87,8 @@ class AppThemes {
       ),
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(
-      secondary: const Color(0xffFFE072),
+      secondary: Colors.white,
+      shadow: const Color(0xffFFE072),
     ),
   );
 }

@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:breeze_forecast/core/utils/app_router.dart';
 import 'package:breeze_forecast/core/utils/helper_methodes.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';

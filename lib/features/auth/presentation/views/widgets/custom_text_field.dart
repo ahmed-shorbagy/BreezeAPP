@@ -16,6 +16,10 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        style: Theme.of(context)
+            .textTheme
+            .bodyLarge!
+            .copyWith(color: Colors.black),
         controller: controller,
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -27,7 +31,10 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
           hintText: hintText,
-          hintStyle: Theme.of(context).textTheme.bodyMedium,
+          hintStyle: Theme.of(context)
+              .textTheme
+              .bodyLarge!
+              .copyWith(color: Colors.black),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           filled: true,
