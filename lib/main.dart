@@ -1,3 +1,5 @@
+import 'package:bloc/bloc.dart';
+import 'package:breeze_forecast/core/errors/simple_bloc_observer.dart';
 import 'package:breeze_forecast/core/theme/language_manager.dart';
 import 'package:breeze_forecast/core/theme/theme_constants.dart';
 import 'package:breeze_forecast/core/theme/theme_manager.dart';
@@ -16,6 +18,7 @@ void main() {
       create: (context) => LanguageProvider(),
     ),
   ], child: const BreezeForecast()));
+  Bloc.observer = SimpleBLocObserver();
 }
 
 class BreezeForecast extends StatelessWidget {
@@ -24,6 +27,7 @@ class BreezeForecast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
       locale: Locale(Provider.of<LanguageProvider>(context).local),
       localizationsDelegates: const [
