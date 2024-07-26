@@ -12,7 +12,7 @@ class CurrentWeatherTab extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "${currentWeatherModel.current?.apparentTemperature ?? ""} °",
+          "${currentWeatherModel.current?.apparentTemperature ?? ""} ° C",
           style: Theme.of(context)
               .textTheme
               .displayLarge!
