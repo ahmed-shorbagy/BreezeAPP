@@ -9,6 +9,8 @@ import 'package:breeze_forecast/features/auth/presentation/views/sign_up_view.da
 import 'package:breeze_forecast/features/home/data/repositries/home_repo.dart';
 import 'package:breeze_forecast/features/home/presentation/managers/city_name_cubit/city_name_cubit.dart';
 import 'package:breeze_forecast/features/home/presentation/managers/current_weather_cubit/current_weather_cubit.dart';
+import 'package:breeze_forecast/features/home/presentation/managers/daily_weahter_cubit/daily_weather_cubit.dart';
+import 'package:breeze_forecast/features/home/presentation/managers/hourly_weather_cubit/hourly_weather_cubit.dart';
 import 'package:breeze_forecast/features/home/presentation/views/home_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -62,6 +64,12 @@ abstract class AppRouter {
           ),
           BlocProvider(
             create: (context) => CityFromLocationCubit(getIt.get<HomeRepo>()),
+          ),
+          BlocProvider(
+            create: (context) => HourlyWeatherCubit(getIt.get<HomeRepo>()),
+          ),
+          BlocProvider(
+            create: (context) => DailyWeatherCubit(getIt.get<HomeRepo>()),
           ),
         ],
         child: const HomeView(),

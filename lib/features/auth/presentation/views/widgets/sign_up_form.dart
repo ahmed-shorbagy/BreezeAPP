@@ -1,12 +1,7 @@
 import 'package:breeze_forecast/core/utils/app_router.dart';
-import 'package:breeze_forecast/core/utils/helper_methodes.dart';
-import 'package:breeze_forecast/features/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
-import 'package:breeze_forecast/features/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
-import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/views/widgets/custom_text_field.dart';
-import 'package:breeze_forecast/features/home/presentation/managers/current_weather_cubit/current_weather_cubit.dart';
+import 'package:breeze_forecast/features/auth/presentation/views/widgets/sign_up_button_with_bloc_logic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -18,7 +13,7 @@ class SignUpForm extends StatefulWidget {
 
 class _SignInFormState extends State<SignUpForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   bool isobsecure = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -27,7 +22,6 @@ class _SignInFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      autovalidateMode: autovalidateMode,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -60,46 +54,10 @@ class _SignInFormState extends State<SignUpForm> {
           const SizedBox(
             height: 32,
           ),
-          ElevatedButton(
-            onPressed: () async {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                await BlocProvider.of<SignUpCubit>(context)
-                    .signUpWithEmailAndPassword(
-                  email: emailController.text,
-                  password: passwordController.text,
-                );
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: BlocConsumer<SignUpCubit, SignUpState>(
-                listener: (context, state) async {
-                  if (state is SignUpSuccess) {
-                    GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
-                  } else if (state is SignUpError) {
-                    snackBar(context, state.errMessage);
-                  }
-                },
-                builder: (context, state) {
-                  if (state is SignUpLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  return Text(
-                    'Sign In',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                  );
-                },
-              ),
-            ),
-          ),
+          SignUpButtonWithBlocLogic(
+              formKey: formKey,
+              emailController: emailController,
+              passwordController: passwordController),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

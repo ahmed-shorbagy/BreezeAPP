@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 import 'current.dart';
 import 'current_units.dart';
 

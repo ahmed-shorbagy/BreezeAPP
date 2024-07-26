@@ -104,10 +104,18 @@ class _InitializationViewState extends State<InitializationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          textAlign: TextAlign.center,
-          'Breeze Forecast',
-          style: Theme.of(context).textTheme.headlineLarge,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              textAlign: TextAlign.center,
+              'Breeze Forecast',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const CircularProgressIndicator(
+              color: Colors.white,
+            )
+          ],
         ),
       ),
     );

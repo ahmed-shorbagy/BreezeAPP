@@ -46,6 +46,7 @@ class _HomeViewState extends State<HomeView> {
           } else if (state is CurrentWeatherSuccess) {
             log("${state.currentWeatherModel.current?.apparentTemperature ?? ""} °");
             return PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _pageController,
               onPageChanged: (index) {
                 setState(() {

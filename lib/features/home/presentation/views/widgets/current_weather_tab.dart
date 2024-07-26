@@ -1,5 +1,7 @@
 import 'package:breeze_forecast/features/home/data/models/current_weather_model/current_weather.dart';
+import 'package:breeze_forecast/features/home/presentation/views/widgets/weather_data_table.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CurrentWeatherTab extends StatelessWidget {
   const CurrentWeatherTab({super.key, required this.currentWeatherModel});
@@ -7,19 +9,19 @@ class CurrentWeatherTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           "${currentWeatherModel.current?.apparentTemperature ?? ""} °",
           style: Theme.of(context)
               .textTheme
-              .headlineLarge!
+              .displayLarge!
               .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        Container(
-          height: 60,
-          width: 60,
-          color: Colors.amber,
-        )
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: WeatherDataTable(currentWeatherModel: currentWeatherModel),
+        ),
       ],
     );
   }

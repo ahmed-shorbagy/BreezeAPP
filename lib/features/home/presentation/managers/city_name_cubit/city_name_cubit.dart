@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
-import 'package:breeze_forecast/features/home/data/models/city_name_model/city_from_location_model.dart';
+import 'package:breeze_forecast/features/home/data/models/city_from_location_model/city_from_location_model.dart';
 import 'package:breeze_forecast/features/home/data/repositries/home_repo.dart';
 import 'package:meta/meta.dart';
 

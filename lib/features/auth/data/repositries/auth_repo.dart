@@ -2,8 +2,6 @@ import 'package:breeze_forecast/core/errors/faluire.dart';
 import 'package:breeze_forecast/features/auth/data/models/position_model.dart';
 import 'package:breeze_forecast/features/auth/data/models/user_model.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
-import 'package:breeze_forecast/features/home/data/repositries/home_repo.dart';
-import 'package:breeze_forecast/features/home/presentation/managers/city_name_cubit/city_name_cubit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';

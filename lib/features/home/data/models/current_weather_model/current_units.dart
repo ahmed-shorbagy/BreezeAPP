@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 class CurrentUnits {
   final String? time;
   final String? interval;

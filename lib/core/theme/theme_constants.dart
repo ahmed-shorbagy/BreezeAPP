@@ -1,6 +1,7 @@
 // lib/theme.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(
@@ -27,13 +28,14 @@ class AppThemes {
       ).titleLarge,
     ),
     textTheme: const TextTheme(
-      headlineLarge: TextStyle(color: Colors.black),
-      headlineMedium: TextStyle(color: Colors.black),
+      headlineLarge: TextStyle(color: Colors.white),
+      headlineMedium: TextStyle(color: Colors.white),
+      headlineSmall: TextStyle(color: Colors.white),
       bodyLarge: TextStyle(
-        color: Colors.black,
+        color: Colors.white,
       ),
-      bodyMedium: TextStyle(color: Colors.black54),
-      titleLarge: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      bodyMedium: TextStyle(color: Colors.white),
+      titleLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
