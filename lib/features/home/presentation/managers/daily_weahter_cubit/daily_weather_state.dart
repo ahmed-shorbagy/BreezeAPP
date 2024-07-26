@@ -5,7 +5,7 @@ sealed class DailyWeatherState {}
 
 final class DailyWeatherInitial extends DailyWeatherState {}
 
-final class DailyWeatherLoafing extends DailyWeatherState {}
+final class DailyWeatherLoading extends DailyWeatherState {}
 
 final class DailyWeatherSuccess extends DailyWeatherState {
   final DailyWeatherModel dailyWeatherModel;

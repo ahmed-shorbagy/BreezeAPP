@@ -9,10 +9,10 @@ class DailyWeatherModel {
   double? latitude;
   double? longitude;
   double? generationtimeMs;
-  int? utcOffsetSeconds;
+  num? utcOffsetSeconds;
   String? timezone;
   String? timezoneAbbreviation;
-  int? elevation;
+  num? elevation;
   CurrentUnits? currentUnits;
   Current? current;
   DailyUnits? dailyUnits;
@@ -37,10 +37,10 @@ class DailyWeatherModel {
       latitude: (data['latitude'] as num?)?.toDouble(),
       longitude: (data['longitude'] as num?)?.toDouble(),
       generationtimeMs: (data['generationtime_ms'] as num?)?.toDouble(),
-      utcOffsetSeconds: data['utc_offset_seconds'] as int?,
+      utcOffsetSeconds: data['utc_offset_seconds'] as num?,
       timezone: data['timezone'] as String?,
       timezoneAbbreviation: data['timezone_abbreviation'] as String?,
-      elevation: data['elevation'] as int?,
+      elevation: data['elevation'] as num?,
       currentUnits: data['current_units'] == null
           ? null
           : CurrentUnits.fromMap(data['current_units'] as Map<String, dynamic>),
@@ -86,10 +86,10 @@ class DailyWeatherModel {
     double? latitude,
     double? longitude,
     double? generationtimeMs,
-    int? utcOffsetSeconds,
+    num? utcOffsetSeconds,
     String? timezone,
     String? timezoneAbbreviation,
-    int? elevation,
+    num? elevation,
     CurrentUnits? currentUnits,
     Current? current,
     DailyUnits? dailyUnits,

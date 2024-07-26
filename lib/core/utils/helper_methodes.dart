@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void snackBar(BuildContext context, String massage) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    backgroundColor: Theme.of(context).colorScheme.secondary,
+    backgroundColor: Theme.of(context).colorScheme.shadow,
     behavior: SnackBarBehavior.floating,
     shape: const StadiumBorder(),
     content: Center(
@@ -10,7 +10,8 @@ void snackBar(BuildContext context, String massage) {
       massage,
       textAlign: TextAlign.center,
       maxLines: 2,
-      style: Theme.of(context).textTheme.bodyMedium,
+      style:
+          Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
     )),
     padding: const EdgeInsets.all(12),
     duration: const Duration(seconds: 2),

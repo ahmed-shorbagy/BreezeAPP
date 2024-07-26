@@ -1,10 +1,10 @@
 import 'package:breeze_forecast/core/errors/faluire.dart';
 import 'package:breeze_forecast/features/auth/data/models/position_model.dart';
 import 'package:breeze_forecast/features/auth/data/models/user_model.dart';
-import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -47,19 +47,35 @@ class AuthRepo {
     }
   }
 
-  Future<void> saveUserLocation(
-      {required String userId,
-      required double latitude,
-      required double longitude}) async {
+  Future<Either<Failure, void>> saveUserLocation({
+    required String userId,
+    required double latitude,
+    required double longitude,
+    required String cityName,
+  }) async {
     try {
-      await _db.collection('users').doc(userId).collection('locations').add({
-        'latitude': latitude,
-        'longitude': longitude,
-        'city': UserCubit.position.cityName,
-        'timestamp': DateTime.now().millisecondsSinceEpoch
-      });
+      final userLocationCollection =
+          _db.collection('users').doc(userId).collection('locations');
+      final cityQuery =
+          await userLocationCollection.where('city', isEqualTo: cityName).get();
+
+      if (cityQuery.docs.isEmpty) {
+        String formattedTimestamp =
+            DateFormat('yyyy-MM-dd HH:mm').format(DateTime.now());
+
+        await userLocationCollection.add({
+          'latitude': latitude,
+          'longitude': longitude,
+          'city': cityName,
+          'timestamp': formattedTimestamp,
+        });
+
+        return right(null);
+      } else {
+        return left(ServerFaliure(errMessage: 'Location already saved.'));
+      }
     } catch (e) {
-      print("Error saving location: $e");
+      return left(ServerFaliure(errMessage: e.toString()));
     }
   }
 

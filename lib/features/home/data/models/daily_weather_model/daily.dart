@@ -1,18 +1,18 @@
 import 'dart:convert';
 
 class Daily {
-  List<String>? time;
-  List<int>? weatherCode;
-  List<double>? apparentTemperatureMax;
-  List<double>? apparentTemperatureMin;
-  List<String>? sunrise;
-  List<String>? sunset;
-  List<double>? daylightDuration;
-  List<num>? precipitationSum;
-  List<num>? rainSum;
-  List<int>? precipitationHours;
-  List<int>? precipitationProbabilityMax;
-  List<int>? windDirection10mDominant;
+  List<dynamic>? time;
+  List<dynamic>? weatherCode;
+  List<dynamic>? apparentTemperatureMax;
+  List<dynamic>? apparentTemperatureMin;
+  List<dynamic>? sunrise;
+  List<dynamic>? sunset;
+  List<dynamic>? daylightDuration;
+  List<dynamic>? precipitationSum;
+  List<dynamic>? rainSum;
+  List<dynamic>? precipitationHours;
+  List<dynamic>? precipitationProbabilityMax;
+  List<dynamic>? windDirection10mDominant;
 
   Daily({
     this.time,
@@ -30,22 +30,22 @@ class Daily {
   });
 
   factory Daily.fromMap(Map<String, dynamic> data) => Daily(
-        time: data['time'] as List<String>?,
-        weatherCode: data['weather_code'] as List<int>?,
+        time: data['time'] as List<dynamic>?,
+        weatherCode: data['weather_code'] as List<dynamic>?,
         apparentTemperatureMax:
-            data['apparent_temperature_max'] as List<double>?,
+            data['apparent_temperature_max'] as List<dynamic>?,
         apparentTemperatureMin:
-            data['apparent_temperature_min'] as List<double>?,
-        sunrise: data['sunrise'] as List<String>?,
-        sunset: data['sunset'] as List<String>?,
-        daylightDuration: data['daylight_duration'] as List<double>?,
-        precipitationSum: data['precipitation_sum'] as List<num>?,
-        rainSum: data['rain_sum'] as List<num>?,
-        precipitationHours: data['precipitation_hours'] as List<int>?,
+            data['apparent_temperature_min'] as List<dynamic>?,
+        sunrise: data['sunrise'] as List<dynamic>?,
+        sunset: data['sunset'] as List<dynamic>?,
+        daylightDuration: data['daylight_duration'] as List<dynamic>?,
+        precipitationSum: data['precipitation_sum'] as List<dynamic>?,
+        rainSum: data['rain_sum'] as List<dynamic>?,
+        precipitationHours: data['precipitation_hours'] as List<dynamic>?,
         precipitationProbabilityMax:
-            data['precipitation_probability_max'] as List<int>?,
+            data['precipitation_probability_max'] as List<dynamic>?,
         windDirection10mDominant:
-            data['wind_direction_10m_dominant'] as List<int>?,
+            data['wind_direction_10m_dominant'] as List<dynamic>?,
       );
 
   Map<String, dynamic> toMap() => {
@@ -76,18 +76,18 @@ class Daily {
   String toJson() => json.encode(toMap());
 
   Daily copyWith({
-    List<String>? time,
-    List<int>? weatherCode,
-    List<double>? apparentTemperatureMax,
-    List<double>? apparentTemperatureMin,
-    List<String>? sunrise,
-    List<String>? sunset,
-    List<double>? daylightDuration,
-    List<num>? precipitationSum,
-    List<num>? rainSum,
-    List<int>? precipitationHours,
-    List<int>? precipitationProbabilityMax,
-    List<int>? windDirection10mDominant,
+    List<dynamic>? time,
+    List<dynamic>? weatherCode,
+    List<dynamic>? apparentTemperatureMax,
+    List<dynamic>? apparentTemperatureMin,
+    List<dynamic>? sunrise,
+    List<dynamic>? sunset,
+    List<dynamic>? daylightDuration,
+    List<dynamic>? precipitationSum,
+    List<dynamic>? rainSum,
+    List<dynamic>? precipitationHours,
+    List<dynamic>? precipitationProbabilityMax,
+    List<dynamic>? windDirection10mDominant,
   }) {
     return Daily(
       time: time ?? this.time,

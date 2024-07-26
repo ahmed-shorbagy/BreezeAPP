@@ -11,7 +11,7 @@ class DailyWeatherCubit extends Cubit<DailyWeatherState> {
 
   Future<void> getDailyWeather(
       {required double lat, required double long}) async {
-    emit(DailyWeatherLoafing());
+    emit(DailyWeatherLoading());
     final result = await homeRepo.getDailyWeather(lat: lat, long: long);
     result.fold(
       (err) => emit(DailyWeatherError(err.errMessage)),
