@@ -8,7 +8,6 @@ import 'package:breeze_forecast/features/home/data/models/daily_weather_model/da
 import 'package:breeze_forecast/features/home/data/models/hourly_weather_model/hourly_weather_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:geocoding/geocoding.dart';
 
 class HomeRepo {
   final apiService = ApiService(Dio());

@@ -65,7 +65,7 @@ class _SignInFormState extends State<SignUpForm> {
               Text(S.of(context).Alreadyhaveanaccount),
               TextButton(
                 onPressed: () {
-                  GoRouter.of(context).pushReplacement(AppRouter.kSignUpView);
+                  GoRouter.of(context).pushReplacement(AppRouter.kSignInView);
                 },
                 child: Text(S.of(context).login,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
