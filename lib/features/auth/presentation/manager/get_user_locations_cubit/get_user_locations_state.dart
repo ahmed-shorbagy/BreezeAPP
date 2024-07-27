@@ -6,7 +6,7 @@ sealed class GetUserLocationsState {}
 final class GetUserLocationsInitial extends GetUserLocationsState {}
 
 final class GetUserLocationsSuccess extends GetUserLocationsState {
-  final List<Position> locations;
+  final List<UserPosition> locations;
 
   GetUserLocationsSuccess(this.locations);
 }

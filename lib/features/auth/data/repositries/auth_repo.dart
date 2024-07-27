@@ -81,7 +81,7 @@ class AuthRepo {
     }
   }
 
-  Future<Either<Failure, List<Position>>> getUserLocations(
+  Future<Either<Failure, List<UserPosition>>> getUserLocations(
       {required String userId}) async {
     try {
       final snapshot = await _db
@@ -90,9 +90,10 @@ class AuthRepo {
           .collection('locations')
           .get();
 
-      log("${snapshot.docs.map((doc) => Position.fromMap(doc.data())).toList()}");
-      return right(
-          snapshot.docs.map((doc) => Position.fromMap(doc.data())).toList());
+      log("${snapshot.docs.map((doc) => UserPosition.fromMap(doc.data())).toList()}");
+      return right(snapshot.docs
+          .map((doc) => UserPosition.fromMap(doc.data()))
+          .toList());
     } catch (e) {
       print("Error fetching locations: $e");
       return left(ServerFaliure(errMessage: e.toString()));

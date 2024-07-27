@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:breeze_forecast/core/utils/app_router.dart';
 import 'package:breeze_forecast/core/utils/location_service.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
@@ -47,13 +49,14 @@ class _InitializationViewState extends State<InitializationView> {
 
       UserCubit.position.longitude = position!.longitude;
       UserCubit.position.latitude = position.latitude;
-
+      log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+      log(UserCubit.position.latitude.toString());
+      log(UserCubit.position.longitude.toString());
       await BlocProvider.of<CityFromLocationCubit>(context)
           .getCityName(lat: position.latitude, long: position.longitude);
-
       navigateToNextScreen();
     } catch (e) {
-      print("Error retrieving location: $e");
+      log(e.toString());
     }
   }
 

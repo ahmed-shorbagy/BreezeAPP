@@ -6,7 +6,7 @@ sealed class UserCubitState {}
 class UserCubitInitial extends UserCubitState {}
 
 class UserCubitPositionUpdated extends UserCubitState {
-  final Position position;
+  final UserPosition position;
 
   UserCubitPositionUpdated(this.position);
 }

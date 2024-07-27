@@ -1,10 +1,10 @@
-class Position {
+class UserPosition {
   double latitude;
   double longitude;
   String cityName;
   String timeStamp;
 
-  Position({
+  UserPosition({
     required this.cityName,
     required this.latitude,
     required this.longitude,
@@ -20,8 +20,8 @@ class Position {
     };
   }
 
-  factory Position.fromMap(Map<String, dynamic> map) {
-    return Position(
+  factory UserPosition.fromMap(Map<String, dynamic> map) {
+    return UserPosition(
       latitude: map['latitude'] as double,
       longitude: map['longitude'] as double,
       cityName: map['city'] as String,

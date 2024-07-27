@@ -6,9 +6,9 @@ sealed class CityFromLocationState {}
 final class CityFromLocationInitial extends CityFromLocationState {}
 
 final class CityFromLocationSuccess extends CityFromLocationState {
-  final String cityName;
+  final CityFromLocationModel cityFromLocationModel;
 
-  CityFromLocationSuccess({required this.cityName});
+  CityFromLocationSuccess({required this.cityFromLocationModel});
 }
 
 final class CityFromLocationLoading extends CityFromLocationState {}

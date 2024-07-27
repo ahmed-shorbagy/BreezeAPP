@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
 import 'package:breeze_forecast/features/home/data/models/city_from_location_model/city_from_location_model.dart';
@@ -16,10 +18,12 @@ class CityFromLocationCubit extends Cubit<CityFromLocationState> {
     final result = await homeRepo.getReverseGeocode(lat: lat, long: long);
     result.fold((err) {
       emit(CityFromLocationError(err.errMessage));
-    }, (cityName) {
-      emit(CityFromLocationSuccess(cityName: cityName));
-      cityName = cityName;
+    }, (citymodel) {
+      emit(CityFromLocationSuccess(cityFromLocationModel: citymodel));
+
+      cityName = citymodel.address?.city ?? "";
       UserCubit.position.cityName = cityName;
+      log(cityName);
     });
   }
 }

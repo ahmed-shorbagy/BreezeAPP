@@ -1,35 +1,33 @@
+import 'dart:developer';
+
 import 'package:breeze_forecast/features/auth/data/models/position_model.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
-import 'package:location/location.dart';
 
 class LocationService {
-  final Location _location = Location();
-
   Future<bool> checkAndRequestLocationService() async {
-    bool isServiceEnabled = await _location.serviceEnabled();
+    bool isServiceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!isServiceEnabled) {
-      isServiceEnabled = await _location.requestService();
-      if (!isServiceEnabled) {
-        return false;
-      }
+      return false;
     }
     return true;
   }
 
   Future<bool> checkAndRequestLocationPermission() async {
-    PermissionStatus permissionStatus = await _location.hasPermission();
-    if (permissionStatus == PermissionStatus.deniedForever) {
+    LocationPermission permissionStatus = await Geolocator.checkPermission();
+    if (permissionStatus == LocationPermission.deniedForever) {
       return false;
     }
-    if (permissionStatus == PermissionStatus.denied) {
-      permissionStatus = await _location.requestPermission();
-      return permissionStatus == PermissionStatus.granted;
+    if (permissionStatus == LocationPermission.denied) {
+      permissionStatus = await Geolocator.requestPermission();
+      return permissionStatus == LocationPermission.whileInUse ||
+          permissionStatus == LocationPermission.always;
     }
     return true;
   }
 
-  Future<Position?> getUserLocation() async {
+  Future<UserPosition?> getUserLocation() async {
     bool serviceEnabled = await checkAndRequestLocationService();
     if (!serviceEnabled) {
       return null;
@@ -41,17 +39,18 @@ class LocationService {
     }
 
     try {
-      final LocationData locationData = await _location.getLocation();
-      return Position(
-        latitude: locationData.latitude!,
-        longitude: locationData.longitude!,
-        cityName: UserCubit.position.cityName,
-        timeStamp: DateFormat('yyyy-MM-dd HH:mm:ss').format(
-          DateTime.now(),
-        ),
+      final Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      return UserPosition(
+        latitude: position.latitude,
+        longitude: position.longitude,
+        cityName:
+            UserCubit.position.cityName, // Ensure this is handled appropriately
+        timeStamp: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
       );
     } catch (e) {
-      print("Error getting location: $e");
+      log(e.toString());
       return null;
     }
   }

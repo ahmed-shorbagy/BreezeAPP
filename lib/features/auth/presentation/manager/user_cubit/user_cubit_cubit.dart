@@ -8,10 +8,10 @@ part 'user_cubit_state.dart';
 
 class UserCubit extends Cubit<UserCubitState> {
   UserCubit() : super(UserCubitInitial());
-  static Position position =
-      Position(latitude: 0, longitude: 0, cityName: '', timeStamp: '');
+  static UserPosition position =
+      UserPosition(latitude: 0, longitude: 0, cityName: '', timeStamp: '');
 
-  void updatePosition(Position newPosition) {
+  void updatePosition(UserPosition newPosition) {
     log("new position AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: ${newPosition.cityName}");
     emit(UserCubitPositionUpdated(newPosition));
   }
