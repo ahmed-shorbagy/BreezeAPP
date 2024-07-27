@@ -96,6 +96,9 @@ abstract class AppRouter {
             create: (context) => GetUserLocationsCubit(getIt.get<AuthRepo>()),
           ),
           BlocProvider(
+            create: (context) => SaveUserLocationCubit(getIt.get<AuthRepo>()),
+          ),
+          BlocProvider(
             create: (context) => DelteUserLocationCubit(getIt.get<AuthRepo>()),
           ),
           BlocProvider(

@@ -41,8 +41,8 @@
     "rain" : "Rain",
     "precipitation" : "Precipitation",
     "SavedSuccessfully" : "Saved Successfully",
-    "maxTemperature" : "Max Temperature",
-    "minTemperature" : "Min Temperature"
+    "maxTemperature" : "Max Temp",
+    "minTemperature" : "Min Temp"
     
   
 }

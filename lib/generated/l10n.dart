@@ -450,20 +450,20 @@ class S {
     );
   }
 
-  /// `Max Temperature`
+  /// `Max Temp`
   String get maxTemperature {
     return Intl.message(
-      'Max Temperature',
+      'Max Temp',
       name: 'maxTemperature',
       desc: '',
       args: [],
     );
   }
 
-  /// `Min Temperature`
+  /// `Min Temp`
   String get minTemperature {
     return Intl.message(
-      'Min Temperature',
+      'Min Temp',
       name: 'minTemperature',
       desc: '',
       args: [],

@@ -16,9 +16,9 @@ class CityFromLocationCubit extends Cubit<CityFromLocationState> {
     final result = await homeRepo.getReverseGeocode(lat: lat, long: long);
     result.fold((err) {
       emit(CityFromLocationError(err.errMessage));
-    }, (citymodel) {
-      emit(CityFromLocationSuccess(cityNameModel: citymodel));
-      cityName = citymodel.address?.city ?? "";
+    }, (cityName) {
+      emit(CityFromLocationSuccess(cityName: cityName));
+      cityName = cityName;
       UserCubit.position.cityName = cityName;
     });
   }

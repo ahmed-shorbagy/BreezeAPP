@@ -8,6 +8,7 @@ import 'package:breeze_forecast/features/home/data/models/daily_weather_model/da
 import 'package:breeze_forecast/features/home/data/models/hourly_weather_model/hourly_weather_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:geocoding/geocoding.dart';
 
 class HomeRepo {
   final apiService = ApiService(Dio());
@@ -67,7 +68,7 @@ class HomeRepo {
     }
   }
 
-  Future<Either<Failure, CityFromLocationModel>> getReverseGeocode(
+  /* Future<Either<Failure, CityFromLocationModel>> getReverseGeocode(
       {required double lat, required double long}) async {
     try {
       final responce = await apiService.get(
@@ -83,6 +84,27 @@ class HomeRepo {
             ServerFaliure.fromDioErr(e.response?.data['message'] ?? ''));
       }
       log("error : ${e.toString()}", name: e.toString());
+      return Left(ServerFaliure(errMessage: e.toString()));
+    }
+  }    */
+  Future<Either<Failure, String>> getReverseGeocode({
+    required double lat,
+    required double long,
+  }) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
+      if (placemarks.isNotEmpty) {
+        Placemark placemark = placemarks.first;
+        log("placemark : ${placemark.locality}", name: placemark.locality!);
+        return Right(placemark.locality!);
+      } else {
+        return Left(ServerFaliure(errMessage: 'No placemarks found'));
+      }
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return Left(
+            ServerFaliure.fromDioErr(e.response?.data['message'] ?? ''));
+      }
       return Left(ServerFaliure(errMessage: e.toString()));
     }
   }

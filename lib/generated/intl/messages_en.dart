@@ -53,10 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "longitude": MessageLookupByLibrary.simpleMessage("Longitude"),
-        "maxTemperature":
-            MessageLookupByLibrary.simpleMessage("Max Temperature"),
-        "minTemperature":
-            MessageLookupByLibrary.simpleMessage("Min Temperature"),
+        "maxTemperature": MessageLookupByLibrary.simpleMessage("Max Temp"),
+        "minTemperature": MessageLookupByLibrary.simpleMessage("Min Temp"),
         "no_internet": MessageLookupByLibrary.simpleMessage("No Internet"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "precipitation": MessageLookupByLibrary.simpleMessage("Precipitation"),
