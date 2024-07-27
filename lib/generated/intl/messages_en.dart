@@ -21,5 +21,57 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Alreadyhaveanaccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "DayorNight": MessageLookupByLibrary.simpleMessage("Day or Night"),
+        "Donthaveanaccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "SavedLocations":
+            MessageLookupByLibrary.simpleMessage("Saved Locations"),
+        "SavedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Saved Successfully"),
+        "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "Thisfieldisrequired":
+            MessageLookupByLibrary.simpleMessage("This field is required!"),
+        "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "currentweather": MessageLookupByLibrary.simpleMessage("Current"),
+        "daily": MessageLookupByLibrary.simpleMessage("Daily"),
+        "dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
+        "feels_like": MessageLookupByLibrary.simpleMessage("Feels Like"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "hourly": MessageLookupByLibrary.simpleMessage("Hourly"),
+        "humidity": MessageLookupByLibrary.simpleMessage("Humidity"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "latitude": MessageLookupByLibrary.simpleMessage("Latitude"),
+        "light": MessageLookupByLibrary.simpleMessage("Light"),
+        "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "longitude": MessageLookupByLibrary.simpleMessage("Longitude"),
+        "maxTemperature":
+            MessageLookupByLibrary.simpleMessage("Max Temperature"),
+        "minTemperature":
+            MessageLookupByLibrary.simpleMessage("Min Temperature"),
+        "no_internet": MessageLookupByLibrary.simpleMessage("No Internet"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "precipitation": MessageLookupByLibrary.simpleMessage("Precipitation"),
+        "pressure": MessageLookupByLibrary.simpleMessage("Pressure"),
+        "rain": MessageLookupByLibrary.simpleMessage("Rain"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signup": MessageLookupByLibrary.simpleMessage("Signup"),
+        "sunrise": MessageLookupByLibrary.simpleMessage("Sunrise"),
+        "sunset": MessageLookupByLibrary.simpleMessage("Sunset"),
+        "system": MessageLookupByLibrary.simpleMessage("System"),
+        "temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
+        "wind": MessageLookupByLibrary.simpleMessage("Wind"),
+        "wind_direction":
+            MessageLookupByLibrary.simpleMessage("Wind Direction"),
+        "wind_speed": MessageLookupByLibrary.simpleMessage("Wind Speed")
+      };
 }

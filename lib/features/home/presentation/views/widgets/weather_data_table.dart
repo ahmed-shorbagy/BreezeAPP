@@ -1,4 +1,5 @@
 import 'package:breeze_forecast/features/home/data/models/current_weather_model/current_weather.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class WeatherDataTable extends StatelessWidget {
@@ -25,7 +26,7 @@ class WeatherDataTable extends StatelessWidget {
             ),
             children: [
               Text(
-                "humidity  ",
+                S.of(context).humidity,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
@@ -42,7 +43,7 @@ class WeatherDataTable extends StatelessWidget {
             ),
             children: [
               Text(
-                "wind speed  ",
+                S.of(context).wind_speed,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
@@ -59,7 +60,7 @@ class WeatherDataTable extends StatelessWidget {
             ),
             children: [
               Text(
-                "Day or Night  ",
+                S.of(context).DayorNight,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
@@ -76,7 +77,7 @@ class WeatherDataTable extends StatelessWidget {
             ),
             children: [
               Text(
-                " Rain  ",
+                S.of(context).rain,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
@@ -93,7 +94,7 @@ class WeatherDataTable extends StatelessWidget {
             ),
             children: [
               Text(
-                " precipitation  ",
+                S.of(context).precipitation,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),

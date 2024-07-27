@@ -2,11 +2,13 @@ class Position {
   double latitude;
   double longitude;
   String cityName;
+  String timeStamp;
 
   Position({
     required this.cityName,
     required this.latitude,
     required this.longitude,
+    required this.timeStamp,
   });
 
   Map<String, dynamic> toMap() {
@@ -14,6 +16,7 @@ class Position {
       'latitude': latitude,
       'longitude': longitude,
       'cityName': cityName,
+      'timestamp': timeStamp
     };
   }
 
@@ -21,7 +24,8 @@ class Position {
     return Position(
       latitude: map['latitude'] as double,
       longitude: map['longitude'] as double,
-      cityName: map['cityName'] as String,
+      cityName: map['city'] as String,
+      timeStamp: map['timestamp'] as String,
     );
   }
 }

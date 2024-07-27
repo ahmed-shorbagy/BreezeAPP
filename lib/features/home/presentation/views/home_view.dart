@@ -5,6 +5,7 @@ import 'package:breeze_forecast/features/home/presentation/views/widgets/current
 import 'package:breeze_forecast/features/home/presentation/views/widgets/daily_forecast_tab.dart';
 import 'package:breeze_forecast/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:breeze_forecast/features/home/presentation/views/widgets/hourly_forecast_tab.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -73,20 +74,20 @@ class _HomeViewState extends State<HomeView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.today,
             ),
-            label: 'Current',
+            label: S.of(context).currentweather,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.hourglass_empty),
-            label: 'Hourly',
+            icon: const Icon(Icons.hourglass_empty),
+            label: S.of(context).hourly,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Daily',
+            icon: const Icon(Icons.calendar_today),
+            label: S.of(context).daily,
           ),
         ],
         currentIndex: _selectedIndex,

@@ -14,7 +14,8 @@ class GetUserLocationsCubit extends Cubit<GetUserLocationsState> {
     try {
       final locations =
           await authRepo.getUserLocations(userId: auth.currentUser!.uid);
-      emit(GetUserLocationsSuccess(locations));
+      locations.fold((err) => emit(GetUserLocationsError(err.errMessage)),
+          (success) => emit(GetUserLocationsSuccess(success)));
     } catch (e) {
       emit(GetUserLocationsError(e.toString()));
     }

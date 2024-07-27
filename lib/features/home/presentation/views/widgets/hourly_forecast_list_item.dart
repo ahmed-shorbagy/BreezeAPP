@@ -1,4 +1,5 @@
 import 'package:breeze_forecast/features/home/data/models/hourly_weather_model/hourly_weather_model.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class HourlyForecastListItem extends StatelessWidget {
@@ -39,7 +40,7 @@ class HourlyForecastListItem extends StatelessWidget {
                 const Icon(Icons.thermostat, color: Colors.orange),
                 const SizedBox(width: 8.0),
                 Text(
-                  'Temp: ${hourlyWeatherModel.hourly?.apparentTemperature?[index] ?? ''}°C',
+                  '${S.of(context).temperature}: ${hourlyWeatherModel.hourly?.apparentTemperature?[index] ?? ''}°C',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
@@ -50,7 +51,7 @@ class HourlyForecastListItem extends StatelessWidget {
                 const Icon(Icons.water_drop, color: Colors.blue),
                 const SizedBox(width: 8.0),
                 Text(
-                  'Humidity: ${hourlyWeatherModel.hourly?.relativeHumidity2m?[index] ?? ''}%',
+                  '${S.of(context).humidity}: ${hourlyWeatherModel.hourly?.relativeHumidity2m?[index] ?? ''}%',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
@@ -61,7 +62,7 @@ class HourlyForecastListItem extends StatelessWidget {
                 const Icon(Icons.air, color: Colors.green),
                 const SizedBox(width: 8.0),
                 Text(
-                  'Wind Speed: ${hourlyWeatherModel.hourly?.windSpeed10m?[index] ?? ''} Km/h',
+                  '${S.of(context).wind_speed}: ${hourlyWeatherModel.hourly?.windSpeed10m?[index] ?? ''} Km/h',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],

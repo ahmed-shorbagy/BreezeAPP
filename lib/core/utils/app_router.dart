@@ -1,5 +1,6 @@
 import 'package:breeze_forecast/core/utils/service_locator.dart';
 import 'package:breeze_forecast/features/auth/data/repositries/auth_repo.dart';
+import 'package:breeze_forecast/features/auth/presentation/manager/delete_user_location_cubit/delte_user_location_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/get_user_locations_cubit/get_user_locations_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/save_user_location_cubit/save_user_location_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
@@ -15,6 +16,7 @@ import 'package:breeze_forecast/features/home/presentation/managers/daily_weahte
 import 'package:breeze_forecast/features/home/presentation/managers/hourly_weather_cubit/hourly_weather_cubit.dart';
 import 'package:breeze_forecast/features/home/presentation/views/home_view.dart';
 import 'package:breeze_forecast/features/home/presentation/views/saved_locations_view.dart';
+import 'package:breeze_forecast/features/home/presentation/views/setting_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,6 +25,7 @@ abstract class AppRouter {
   static const String kHomeView = '/homeView';
   static const String kSignInView = '/signInView';
   static const String kSavedLocationsView = '/savedLocationsView';
+  static const String kSettingsView = '/settingsView';
 
   static const String kInitialView = '/';
 
@@ -78,16 +81,36 @@ abstract class AppRouter {
           BlocProvider(
             create: (context) => SaveUserLocationCubit(getIt.get<AuthRepo>()),
           ),
+          BlocProvider(
+            create: (context) => UserCubit(),
+          ),
         ],
         child: const HomeView(),
       ),
     ),
     GoRoute(
       path: kSavedLocationsView,
-      builder: (context, state) => BlocProvider(
-        create: (context) => GetUserLocationsCubit(getIt.get<AuthRepo>()),
+      builder: (context, state) => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => GetUserLocationsCubit(getIt.get<AuthRepo>()),
+          ),
+          BlocProvider(
+            create: (context) => DelteUserLocationCubit(getIt.get<AuthRepo>()),
+          ),
+          BlocProvider(
+            create: (context) => CurrentWeatherCubit(getIt.get<HomeRepo>()),
+          ),
+          BlocProvider(
+            create: (context) => UserCubit(),
+          ),
+        ],
         child: const SavedLocationsView(),
       ),
+    ),
+    GoRoute(
+      path: kSettingsView,
+      builder: (context, state) => const SettingsView(),
     ),
   ]);
 }

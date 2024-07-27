@@ -1,6 +1,7 @@
 import 'package:breeze_forecast/core/utils/app_router.dart';
 import 'package:breeze_forecast/core/utils/helper_methodes.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -47,7 +48,7 @@ class SignUpButtonWithBlocLogic extends StatelessWidget {
               );
             }
             return Text(
-              'Sign In',
+              S.of(context).signup,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),

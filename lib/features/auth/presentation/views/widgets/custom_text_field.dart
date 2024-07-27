@@ -1,3 +1,4 @@
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -23,7 +24,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'This field is required';
+            return S.of(context).Thisfieldisrequired;
           }
           return null;
         },

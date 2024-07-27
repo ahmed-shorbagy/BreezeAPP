@@ -1,6 +1,7 @@
 import 'package:breeze_forecast/core/utils/app_router.dart';
 import 'package:breeze_forecast/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:breeze_forecast/features/auth/presentation/views/widgets/sign_up_button_with_bloc_logic.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,7 +28,7 @@ class _SignInFormState extends State<SignUpForm> {
         children: [
           CustomTextField(
             controller: emailController,
-            hintText: 'Email',
+            hintText: S.of(context).email,
             prefixIcon: Icon(
               Icons.email,
               color: Theme.of(context).colorScheme.shadow,
@@ -38,7 +39,7 @@ class _SignInFormState extends State<SignUpForm> {
           ),
           CustomTextField(
             controller: passwordController,
-            hintText: 'Password',
+            hintText: S.of(context).password,
             prefixIcon: IconButton(
               onPressed: () {
                 setState(() {
@@ -61,12 +62,12 @@ class _SignInFormState extends State<SignUpForm> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Already have an account?"),
+              Text(S.of(context).Alreadyhaveanaccount),
               TextButton(
                 onPressed: () {
                   GoRouter.of(context).pushReplacement(AppRouter.kSignUpView);
                 },
-                child: Text("Sign In",
+                child: Text(S.of(context).login,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.shadow,
                           fontWeight: FontWeight.bold,

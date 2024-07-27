@@ -1,4 +1,5 @@
 import 'package:breeze_forecast/features/home/data/models/daily_weather_model/daily_weather_model.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -40,7 +41,7 @@ class DailyWeatherListItem extends StatelessWidget {
                 const SizedBox(width: 8.0),
                 Flexible(
                   child: Text(
-                    'Max Temp: ${dailyWeatherModel.daily?.apparentTemperatureMax?[index] ?? ''}°C',
+                    '${S.of(context).maxTemperature}: ${dailyWeatherModel.daily?.apparentTemperatureMax?[index] ?? ''}°C',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
@@ -50,7 +51,7 @@ class DailyWeatherListItem extends StatelessWidget {
                 const SizedBox(width: 8.0),
                 Flexible(
                   child: Text(
-                    'Min Temp: ${dailyWeatherModel.daily?.apparentTemperatureMin?[index] ?? ''}°C',
+                    '${S.of(context).minTemperature}: ${dailyWeatherModel.daily?.apparentTemperatureMin?[index] ?? ''}°C',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
@@ -64,7 +65,7 @@ class DailyWeatherListItem extends StatelessWidget {
                 const SizedBox(width: 8.0),
                 Flexible(
                   child: Text(
-                    'Precipitation: ${dailyWeatherModel.daily?.precipitationSum?[index] ?? ''} mm',
+                    '${S.of(context).precipitation}: ${dailyWeatherModel.daily?.precipitationSum?[index] ?? ''} mm',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
@@ -78,7 +79,7 @@ class DailyWeatherListItem extends StatelessWidget {
                 const SizedBox(width: 8.0),
                 Flexible(
                   child: Text(
-                    'Wind: ${dailyWeatherModel.daily?.windDirection10mDominant?[index] ?? ''}°',
+                    '${S.of(context).wind}: ${dailyWeatherModel.daily?.windDirection10mDominant?[index] ?? ''}°',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
@@ -92,7 +93,7 @@ class DailyWeatherListItem extends StatelessWidget {
                 const SizedBox(width: 8.0),
                 Flexible(
                   child: Text(
-                    'Sunrise: ${DateFormat('HH:mm').format(DateTime.parse(dailyWeatherModel.daily?.sunrise?[index] ?? ''))}',
+                    '${S.of(context).sunrise}: ${DateFormat('HH:mm').format(DateTime.parse(dailyWeatherModel.daily?.sunrise?[index] ?? ''))}',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
@@ -102,7 +103,7 @@ class DailyWeatherListItem extends StatelessWidget {
                 const SizedBox(width: 8.0),
                 Flexible(
                   child: Text(
-                    'Sunset: ${DateFormat('HH:mm').format(DateTime.parse(dailyWeatherModel.daily?.sunset?[index] ?? ''))}',
+                    '${S.of(context).sunset}: ${DateFormat('HH:mm').format(DateTime.parse(dailyWeatherModel.daily?.sunset?[index] ?? ''))}',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),

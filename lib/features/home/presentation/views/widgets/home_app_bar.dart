@@ -1,9 +1,12 @@
+import 'package:breeze_forecast/core/utils/app_router.dart';
 import 'package:breeze_forecast/core/utils/helper_methodes.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/save_user_location_cubit/save_user_location_cubit.dart';
 import 'package:breeze_forecast/features/auth/presentation/manager/user_cubit/user_cubit_cubit.dart';
 import 'package:breeze_forecast/features/home/presentation/managers/current_weather_cubit/current_weather_cubit.dart';
+import 'package:breeze_forecast/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
@@ -13,12 +16,19 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(UserCubit.position.cityName,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(context)
-              .textTheme
-              .headlineLarge!
-              .copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+      title: BlocBuilder<UserCubit, UserCubitState>(
+        bloc: BlocProvider.of<UserCubit>(context)
+          ..updatePosition(UserCubit.position),
+        builder: (context, state) {
+          if (state is UserCubitInitial) {
+            return Text(UserCubit.position.cityName);
+          } else if (state is UserCubitPositionUpdated) {
+            return Text(state.position.cityName);
+          } else {
+            return Text(UserCubit.position.cityName);
+          }
+        },
+      ),
       actions: [
         IconButton(
           icon: const Icon(Icons.add),
@@ -38,7 +48,7 @@ class HomeAppBar extends StatelessWidget {
         BlocListener<SaveUserLocationCubit, SaveUserLocationState>(
           listener: (context, state) {
             if (state is SaveUserLocationSuccess) {
-              snackBar(context, 'Saved successfully');
+              snackBar(context, S.of(context).SavedSuccessfully);
             } else if (state is SaveUserLocationError) {
               snackBar(context, state.errMessage);
             }
@@ -48,7 +58,13 @@ class HomeAppBar extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.location_on),
           onPressed: () {
-            // Navigate to locations screen
+            GoRouter.of(context).pushReplacement(AppRouter.kSavedLocationsView);
+          },
+        ),
+        IconButton(
+          icon: const Icon(Icons.settings),
+          onPressed: () {
+            GoRouter.of(context).push(AppRouter.kSettingsView);
           },
         ),
       ],

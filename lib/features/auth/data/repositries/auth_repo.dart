@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:breeze_forecast/core/errors/faluire.dart';
 import 'package:breeze_forecast/features/auth/data/models/position_model.dart';
 import 'package:breeze_forecast/features/auth/data/models/user_model.dart';
@@ -79,7 +81,8 @@ class AuthRepo {
     }
   }
 
-  Future<List<Position>> getUserLocations({required String userId}) async {
+  Future<Either<Failure, List<Position>>> getUserLocations(
+      {required String userId}) async {
     try {
       final snapshot = await _db
           .collection('users')
@@ -87,11 +90,33 @@ class AuthRepo {
           .collection('locations')
           .get();
 
-      // Convert each document into a Position object
-      return snapshot.docs.map((doc) => Position.fromMap(doc.data())).toList();
+      log("${snapshot.docs.map((doc) => Position.fromMap(doc.data())).toList()}");
+      return right(
+          snapshot.docs.map((doc) => Position.fromMap(doc.data())).toList());
     } catch (e) {
       print("Error fetching locations: $e");
-      return [];
+      return left(ServerFaliure(errMessage: e.toString()));
+    }
+  }
+
+  Future<Either<Failure, void>> deleteLocation(
+      {required String userId, required String cityName}) async {
+    try {
+      await _db
+          .collection('users')
+          .doc(userId)
+          .collection('locations')
+          .where('city', isEqualTo: cityName)
+          .get()
+          .then((querySnapshot) {
+        for (var doc in querySnapshot.docs) {
+          doc.reference.delete();
+        }
+      });
+
+      return right(null);
+    } catch (e) {
+      return left(ServerFaliure(errMessage: e.toString()));
     }
   }
 }
